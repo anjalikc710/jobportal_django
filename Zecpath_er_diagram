@@ -1,0 +1,48 @@
+digraph Zecpatg_ER_Diagram {
+	User [label="User
+-----------------
+id(PK)
+username 
+email
+password
+role
+created_at" shape=box]
+	Employer [label="Employer
+----------------
+id(PK)
+user_id (FK)
+company_name
+company_description
+company_website
+location" shape=box]
+	Candidate [label="Candidate
+----------------
+id (PK)
+user_id (PK)
+full_name
+phone
+resume
+skills
+experience" shape=box]
+	Job [label="Job
+---------------
+id (PK)
+employer_id (FK)
+title
+description
+location
+salary
+created_at" shape=box]
+	Application [label="Application
+----------------
+id (PK)
+job_id (FK)
+candidate_id (FK)
+status
+applied_at" shape=box]
+	User -> Employer [label="1:1"]
+	User -> Candidate [label="1:1"]
+	Employer -> Job [label="1:M"]
+	Job -> Application [label="1:M"]
+	Candidate -> Application [label="1:M"]
+}
